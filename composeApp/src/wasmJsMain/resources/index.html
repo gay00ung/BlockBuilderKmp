@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlockBuilderKmp</title>
+    <title>BlockBuilder - 블록체인 시뮬레이터</title>
+    <!-- Local fonts: Pretendard (static/variable) provided in repo root under /web -->
+    <link rel="stylesheet" href="/web/static/pretendard.css">
+    <link rel="stylesheet" href="/web/static/pretendard-subset.css">
+    <link rel="stylesheet" href="/web/variable/pretendardvariable.css">
     <link type="text/css" rel="stylesheet" href="styles.css">
-    <script type="application/javascript" src="composeApp.js"></script>
 </head>
 <body>
+    <div id="root"></div>
+    <script>
+        // Surface actual errors beyond the dev-server overlay
+        window.addEventListener('error', (e) => {
+            console.error('[BlockBuilder] window.error:', e?.error || e?.message, e);
+        });
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('[BlockBuilder] unhandledrejection:', e?.reason || e);
+        });
+    </script>
+    <!-- Load Kotlin/Wasm bundle (webpack dev server expects classic script) -->
+    <script src="composeApp.js"></script>
 </body>
 </html>
